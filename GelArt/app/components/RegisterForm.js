@@ -1,21 +1,4 @@
-import React, { useRef } from "react";
-import { View } from "react-native";
-import Toast from "react-native-easy-toast";
-import RegisterForm from "../../components/RegisterForm";
-
-export default function Register() {
-  const toastRef = useRef();
-  return (
-    <View>
-      <RegisterForm toastRef={toastRef} />
-      <Toast ref={toastRef} position="center" opacity={0.9} />
-    </View>
-  );
-}
-
-//const styles = StyleSheet.create({});
-//Imagen source={require("")} resizeMode="contain" />
-/*import React, { useState } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -31,10 +14,11 @@ import { useNavigation } from "@react-navigation/native";
 import MaterialRadio from "../../components/MaterialRadio";
 import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
-import { validateEmail } from "../../utils/validations";
+import { validateEmail } from "../utils/validations";
 import { size, isEmpty } from "lodash";
 
-function Register(props) {
+function RegisterForm(props) {
+  const { toastRef } = props;
   const [formData, setFormData] = useState(defaultFormValue());
 
   const onSubmit = () => {
@@ -45,12 +29,14 @@ function Register(props) {
       isEmpty(formData.email) ||
       isEmpty(formData.password) ||
       isEmpty(formData.repeatPassword)
-    );
-    else if (!validateEmail(formData.email));
+    )
+      toastRef.current.show("Debe llenar todos los campos");
+    else if (!validateEmail(formData.email))
+      toastRef.current.show("El email no es correcto");
     else if (formData.password !== formData.repeatPassword)
-      console.log(validateEmail(formData.email));
+      toastRef.current.show("Las contraseñas tienen que ser iguales");
     else if (size(formData.password) < 6)
-      console.log("la contraseña debe tener al menos 6 caracteres");
+      toastRef.current.show("la contraseña debe tener al menos 6 caracteres");
     else console.log("OK");
   };
 
@@ -262,6 +248,10 @@ const styles = StyleSheet.create({
     borderColor: "solid rgba(252,250,250,1)",
     //borderStyle: "solid",
     //shadowColor: "rgba(0,0,0,1)",
+    /*shadowOffset: {
+      width: 3,
+      height: 3,
+    },*/
     elevation: 5,
     //shadowOpacity: 0.36,
     //shadowRadius: 0,
@@ -494,8 +484,10 @@ const styles = StyleSheet.create({
     marginLeft: "7%",
     marginRight: "7%",
     marginBottom: "5%",
+    /*marginBottom: 30,
+    marginLeft: 47,
+    marginRight: 35,*/
   },
 });
 
-export default Register;
-*/
+export default RegisterForm;
