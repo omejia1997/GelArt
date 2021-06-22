@@ -26,6 +26,8 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import MaterialRadio from "../../components/MaterialRadio";
 import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
@@ -124,10 +126,22 @@ function Register(props) {
             <Text style={styles.registrar}>Registrar</Text>
           </TouchableOpacity>
           <Text style={styles.yaTienesCuenta}>¿Ya tienes cuenta?</Text>
-          <Text style={styles.iniciarSesion}>Iniciar Sesion</Text>
+          <GoToLogin />
         </View>
       </ImageBackground>
     </View>
+  );
+}
+
+function GoToLogin(props) {
+  const navigation = useNavigation();
+  return (
+    <Text
+      style={styles.iniciarSesion}
+      onPress={() => navigation.navigate("login")}
+    >
+      Iniciar Sesion
+    </Text>
   );
 }
 
@@ -202,7 +216,7 @@ const styles = StyleSheet.create({
   },
   name1: {
     height: 59,
-    backgroundColor: "#9BAACC",
+    backgroundColor: "#364057",
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "solid rgba(252,250,250,1)",
@@ -236,7 +250,7 @@ const styles = StyleSheet.create({
   },
   group4: {
     height: 59,
-    backgroundColor: "#9BAACC",
+    backgroundColor: "#364057",
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "solid rgba(252,250,250,1)",
@@ -271,7 +285,7 @@ const styles = StyleSheet.create({
   },
   group5: {
     height: 59,
-    backgroundColor: "#9BAACC",
+    backgroundColor: "#364057",
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "solid rgba(252,250,250,1)",
@@ -306,7 +320,7 @@ const styles = StyleSheet.create({
   },
   group: {
     height: 59,
-    backgroundColor: "#9BAACC",
+    backgroundColor: "#364057",
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "solid rgba(255,255,255,1)",
@@ -338,7 +352,7 @@ const styles = StyleSheet.create({
   },
   group3: {
     height: 59,
-    backgroundColor: "#9BAACC",
+    backgroundColor: "#364057",
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "solid rgba(255,255,255,1)",
@@ -369,7 +383,7 @@ const styles = StyleSheet.create({
   },
   password1: {
     height: 59,
-    backgroundColor: "#9BAACC",
+    backgroundColor: "#364057",
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "solid rgba(255,255,255,1)",

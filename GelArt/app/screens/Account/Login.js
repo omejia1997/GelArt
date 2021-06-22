@@ -45,6 +45,7 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
 
@@ -91,10 +92,22 @@ function Login(props) {
             <Text style={styles.text1}>Continue</Text>
           </TouchableOpacity>
           <Text style={styles.noTienesCuenta}>Aun no tienes Cuenta?</Text>
-          <Text style={styles.registrate}>Registrate</Text>
+          <CreateAccount />
         </View>
       </ImageBackground>
     </View>
+  );
+}
+
+function CreateAccount(props) {
+  const navigation = useNavigation();
+  return (
+    <Text
+      style={styles.registrate}
+      onPress={() => navigation.navigate("register")}
+    >
+      Registrate
+    </Text>
   );
 }
 

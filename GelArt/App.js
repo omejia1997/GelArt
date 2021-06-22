@@ -1,12 +1,13 @@
 //import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from "react";
 import Navigation from "./app/navigations/Navigation";
+import { NavigationContainer } from "@react-navigation/native";
 import Login from "./app/screens/Account/Login";
 import Register from "./app/screens/Account/Register";
 import { firebaseApp } from "./app/utils/firebase";
-import { AppRegistry, Navigator } from "react-native";
 /*import * as firebase from "firebase";*/
 //import { StyleSheet, Text, View } from 'react-native';
+import AccountStack from "./app/navigations/AccountStack";
 
 export default function App() {
   /*useEffect(() => {
@@ -15,7 +16,11 @@ export default function App() {
     });
   }, []);*/
   //return <Navigation />;
-  return <Login />;
+  return (
+    <NavigationContainer>
+      <AccountStack />
+    </NavigationContainer>
+  );
   //return <Register />;
 }
 /*
