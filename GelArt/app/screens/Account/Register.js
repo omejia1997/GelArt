@@ -1,19 +1,23 @@
 import React, { useRef } from "react";
-import { View } from "react-native";
+import { View,StyleSheet } from "react-native";
 import Toast from "react-native-easy-toast";
 import RegisterForm from "../../components/RegisterForm";
 
 export default function Register() {
   const toastRef = useRef();
   return (
-    <View>
+    <View style={styles.root}>
       <RegisterForm toastRef={toastRef} />
       <Toast ref={toastRef} position="center" opacity={0.9} />
     </View>
   );
 }
 
-//const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  root:{
+    flex: 1,
+  }
+});
 //Imagen source={require("")} resizeMode="contain" />
 /*import React, { useState } from "react";
 import {

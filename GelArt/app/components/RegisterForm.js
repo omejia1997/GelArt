@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import MaterialRadio from "../../components/MaterialRadio";
+import MaterialRadio from "./MaterialRadio";
 import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
 import { validateEmail } from "../utils/validations";
@@ -37,7 +37,7 @@ function RegisterForm(props) {
       toastRef.current.show("Las contraseñas tienen que ser iguales");
     else if (size(formData.password) < 6)
       toastRef.current.show("la contraseña debe tener al menos 6 caracteres");
-    else console.log("OK");
+    else console.log(formData);
   };
 
   const onChange = (e, type) => {
@@ -50,11 +50,11 @@ function RegisterForm(props) {
       <ImageBackground
         style={styles.rect}
         //imageStyle={styles.rect_imageStyle}
-        source={require("../../../assets/images/Register.png")}
+        source={require("../../assets/images/Register.png")}
       >
         <View style={styles.image1Column}>
           <Image
-            source={require("../../../assets/images/LOGO_GELART5.png")}
+            source={require("../../assets/images/LOGO_GELART5.png")}
             resizeMode="contain"
             style={styles.image1}
           ></Image>
@@ -183,8 +183,8 @@ const styles = StyleSheet.create({
   },
   //rect_imageStyle: {},
   image1: {
-    width: 99,
-    height: 88,
+    width: 100,
+    height: "50%",
     borderWidth: 1,
     borderColor: "solid rgba(226,227,232,1)",
     borderRadius: 11,
